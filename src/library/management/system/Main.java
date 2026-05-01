@@ -1,32 +1,15 @@
 package library.management.system;
 
-
-
 public class Main {
 
     public static void main(String[] args) {
-        // NEW CODE - Singleton Pattern
-        ConsoleIO io = ConsoleIO.getInstance();
-
-        UserFactory userFactory = new UserFactory();
-        RepositoryFactory repositoryFactory = new FileRepositoryFactory(userFactory);
-
-        UserRepository userRepo = repositoryFactory.createUserRepository();
-        BookRepository bookRepo = repositoryFactory.createBookRepository();
-        OrderRepository orderRepo = repositoryFactory.createOrderRepository();
-        BorrowingRepository borrowingRepo = repositoryFactory.createBorrowingRepository();
-
-        UserService userService = new UserService(userRepo);
-        BookService bookService = new BookService(bookRepo);
-        OrderService orderService = new OrderService(orderRepo);
-        BorrowingService borrowingService = new BorrowingService(borrowingRepo, bookService);
-        DataService dataService = new DataService(userRepo, bookRepo, orderRepo, borrowingRepo);
-
-        AppContext ctx = new AppContext(userService, bookService, orderService, borrowingService, dataService, io);
+        // DIP Fix: Use ApplicationConfig instead of direct instantiation
+        ApplicationConfig config = new ApplicationConfig();
+        AppContext ctx = config.createAppContext();
 
         while (true) {
             showWelcomeMenu();
-            int choice = io.readIntInRange("Choose option: ", 0, 2);
+            int choice = ctx.io().readIntInRange("Choose option: ", 0, 2);
             if (choice == 0) {
                 System.out.println("Goodbye!");
                 return;
