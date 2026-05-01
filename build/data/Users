@@ -1,0 +1,12 @@
+Name=0
+PhoneNumber=1258
+Email=kaka@gmail.com
+Password=123
+Type=Normal User
+<NewUser/>
+Name=Sumaiya
+PhoneNumber=01234
+Email=sumaiya@gmail.com
+Password=052
+Type=Normal User
+<NewUser/>
