@@ -1,5 +1,18 @@
 package library.management.system;
 
+/**
+ * DEAD CODE - Code Smell Refactoring
+ * 
+ * This class was identified as Dead Code because:
+ * - linearSearch() and binarySearch() are never called anywhere in the project
+ * - No other class imports or uses this class
+ * 
+ * Kept for reference but marked as dead.
+ * To remove completely, delete this file.
+ * To reactivate, uncomment and add usage.
+ */
+ 
+/*
 public class Search {
 
     public static int linearSearch(int[] array, int target) {
@@ -20,3 +33,4 @@ public class Search {
         return -1;
     }
 }
+*/
